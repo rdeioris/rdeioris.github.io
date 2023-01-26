@@ -35,6 +35,13 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
+      
+      var lockFunction =  window.screen.orientation.lock;
+if (lockFunction.call(window.screen.orientation, 'landscape')) {
+           console.log('Orientation locked')
+} else {
+            console.error('There was a problem in locking the orientation')
+}
     </script>
   </body>
 </html>
