@@ -6,7 +6,7 @@
     <title>Unity WebGL Player | DnartPong</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1440 height=810 tabindex="-1" style="width: 1440px; height: 810px; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=720 height=405 tabindex="-1" style="width: 720px; height: 405px; background: #231F20"></canvas>
     <script src="Build/DnartPong_Web.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -36,12 +36,6 @@
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
       
-      var lockFunction =  window.screen.orientation.lock;
-if (lockFunction.call(window.screen.orientation, 'landscape')) {
-           console.log('Orientation locked')
-} else {
-            console.error('There was a problem in locking the orientation')
-}
     </script>
   </body>
 </html>
