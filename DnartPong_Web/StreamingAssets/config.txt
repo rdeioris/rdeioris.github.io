@@ -1,0 +1,6 @@
+paddle_speed = 300
+ball_speed = 300
+score_to_win = 3
+ball_max_speed = 3000
+ball_speed_increment = 20
+paddle_distance = 0.5
