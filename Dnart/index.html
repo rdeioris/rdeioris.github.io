@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Dnart</title>
+
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+
+    <script src="babylon.js"></script>
+    <script src="babylonjs.loaders.min.js"></script>
+</head>
+
+<body>
+
+    <canvas id="renderCanvas"></canvas>
+
+    <script>
+        var loaded = false;
+        const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+        const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+        const createScene = function () {
+            // Creates a basic Babylon Scene object
+            const scene = new BABYLON.Scene(engine);
+            BABYLON.SceneLoader.Append("./", "StandVirtuale-300322_A.glb", scene, function (scene) {
+                scene.createDefaultCameraOrLight(true, true, true);
+                loaded = true;
+                scene.activeCamera = scene.cameras[1];
+
+                scene.activeCamera.attachControl(canvas, true);
+                scene.activeCamera.checkCollisions = false;
+            });
+            return scene;
+        };
+        const scene = createScene(); //Call the createScene function
+        // Register a render loop to repeatedly render the scene
+        engine.runRenderLoop(function () {
+            if (loaded) {
+                scene.render();
+            }
+        });
+        // Watch for browser/canvas resize events
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+
+</body>
+
+</html>
